@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E5105A82A81042C00F39A06 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5105A72A81042C00F39A06 /* StatusBarView.swift */; };
 		9E60207C2A600CEF00A322D3 /* RatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60207B2A600CEF00A322D3 /* RatingsView.swift */; };
 		9E7691492A5E70CE006EB007 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7691482A5E70CE006EB007 /* OrderView.swift */; };
 		9E76914B2A5E70E5006EB007 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E76914A2A5E70E5006EB007 /* MenuView.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E5105A72A81042C00F39A06 /* StatusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
 		9E60207B2A600CEF00A322D3 /* RatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsView.swift; sourceTree = "<group>"; };
 		9E7691482A5E70CE006EB007 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		9E76914A2A5E70E5006EB007 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				9E76914E2A5E7425006EB007 /* MenuRowView.swift */,
 				9E7691502A5E745D006EB007 /* OrderRowView.swift */,
 				9E7691522A5E7492006EB007 /* HeaderView.swift */,
+				9E5105A72A81042C00F39A06 /* StatusBarView.swift */,
 				9E99A2222A77CFEC004FA7FB /* Model Code */,
 				9ED458B42A5D48B6000ADDEE /* Assets.xcassets */,
 				9ED458B62A5D48B6000ADDEE /* Preview Content */,
@@ -308,6 +311,7 @@
 				9E76914F2A5E7425006EB007 /* MenuRowView.swift in Sources */,
 				9E7691512A5E745D006EB007 /* OrderRowView.swift in Sources */,
 				9E99A22A2A77CFEC004FA7FB /* MenuModel.swift in Sources */,
+				9E5105A82A81042C00F39A06 /* StatusBarView.swift in Sources */,
 				9E99A2282A77CFEC004FA7FB /* MenuItem.swift in Sources */,
 				9E76914D2A5E7403006EB007 /* MenuItemView.swift in Sources */,
 				9E7691532A5E7492006EB007 /* HeaderView.swift in Sources */,
