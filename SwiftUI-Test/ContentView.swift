@@ -21,8 +21,7 @@ struct ContentView: View {
                 .environment(\.colorScheme, .light)
             StatusBarView(showOrders: $showOrders, presentGrid: $presentGrid)
             if showOrders {
-                OrderView(orders: orders)
-                    .cornerRadius(10)
+                OrderView(orders: orders).cornerRadius(10)
             } else {
                 MenuItemView(item: $selectedItem, orders: orders)
                     .padding(5)

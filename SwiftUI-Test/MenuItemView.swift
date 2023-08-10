@@ -12,9 +12,9 @@ struct MenuItemView: View {
     @Binding var item: MenuItem
     @ObservedObject var orders: OrderModel
     @State var presentAlert: Bool = false
-    @State private var newOrder: Bool = false
+    @State private var newOrder: Bool = true
     @State private var order = noOrderItem
-    
+       
     var body: some View {
         VStack {
             HStack {
