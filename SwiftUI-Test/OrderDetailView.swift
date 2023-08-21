@@ -12,6 +12,7 @@ import SwiftUI
 struct OrderDetailView: View {
     @Binding var orderItem:OrderItem
     @Binding var presentSheet:Bool
+    @State private var presentAlert: Bool = false
     @Binding var newOrder:Bool
     @State private var quantity:Int
     @State private var doubleIngredient:Bool
@@ -54,7 +55,6 @@ struct OrderDetailView: View {
                     Image("surfboard_lg")
                         .resizable()
                         .scaledToFit()
-                    
                 }
                 Text(orderItem.item.name)
                     .font(.title)
@@ -71,12 +71,11 @@ struct OrderDetailView: View {
             
             VStack{
                 Picker(selection: $pizzaCrust) {
-                    ForEach(PizzaCrust.allCases,id:\.self){crust in
-                        Text(crust.rawValue).tag(crust)
+                    ForEach(PizzaCrust.allCases,id:\.self) { crust in
+                        Text(crust.rawValue).tag(crust as PizzaCrust?)
                     }
                 } label: {
                     Text("Pizza Crust" + pizzaCrust.rawValue)
-                    
                 }
                 
                 .pickerStyle(SegmentedPickerStyle())
@@ -102,7 +101,7 @@ struct OrderDetailView: View {
                 .shadow(radius: 1)
             Spacer()
             HStack {
-                Button("Order"){
+                Button("Update"){
                     updateOrder()
                     if newOrder {
                         orders.addOrder(orderItem: orderItem)
@@ -110,6 +109,7 @@ struct OrderDetailView: View {
                         orders.replaceOrder(id: orderItem.id, with: orderItem)
                     }
                     presentSheet = false
+                    presentAlert = true
                 }
                 .padding()
                 .padding([.leading,.trailing])
@@ -127,19 +127,21 @@ struct OrderDetailView: View {
                 .background(.red,in: Capsule())
                 .font(.title)
                 .shadow(radius:7,x:2,y:2)
+                .alert("Huli Pizza Company \n \(orderItem.name) Updated", isPresented: $presentAlert){}
             }
         }
         .padding()
         .navigationTitle("Your Order")
-        .background(Color("Surf"))
+        .background(Color("Surf"), in: Rectangle())
         
     }
-    
 }
 
 struct OrderDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderDetailView(orderItem:  .constant(testOrderItem), presentSheet: .constant(true), newOrder: .constant(true)).environmentObject(OrderModel())
+        OrderDetailView(orderItem: .constant(testOrderItem),
+                        presentSheet: .constant(true),
+                        newOrder: .constant(true)).environmentObject(OrderModel())
     }
 }
 
