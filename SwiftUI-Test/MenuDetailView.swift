@@ -16,6 +16,8 @@ struct MenuDetailView: View {
     @State private  var quantity:Int = 1
     @State private var name:String = ""
     @State var orderItem = OrderItem(id: -99, item: noMenuItem)
+    @Environment(\.verticalSizeClass) private var vSizeClass
+    @Environment(\.horizontalSizeClass) private var hSizeClass
     func updateOrder(){
         orderItem.quantity = quantity
         orderItem.extraIngredients = doubleIngredient
@@ -29,7 +31,7 @@ struct MenuDetailView: View {
             HStack {
                 VStack(alignment:.trailing) {
                     Text(item?.name ?? "Huli Pizza Company")
-                        .font(.title)
+                        .font((vSizeClass == .compact) || (hSizeClass == .compact) ? .body : .title)
                         .fontWeight(.semibold)
                         .padding()
                     ScrollView {
@@ -61,7 +63,7 @@ struct MenuDetailView: View {
                         .rotationEffect(.degrees(180))
                 }
             }
-            .frame(maxHeight:200)
+            .frame(maxHeight: (vSizeClass == .compact) || (hSizeClass == .compact) ? 100 : 200)
             .background(.linearGradient(colors: [Color("Surf"),Color("Sky").opacity(0.1)], startPoint: .leading, endPoint: .trailing), in:Capsule())
             .shadow(color:.teal,radius: 5,x:8,y:8)
             .padding(.leading,30)
@@ -73,10 +75,7 @@ struct MenuDetailView: View {
                     }
                 } label: {
                     Text("Pizza Crust")
-                    
                 }
-                .padding(.leading,50)
-                .padding(.trailing,100)
                 .pickerStyle(MenuPickerStyle())
                 .foregroundColor(.black)
                 .background(.ultraThickMaterial)
@@ -91,7 +90,6 @@ struct MenuDetailView: View {
                 }
             }
             .padding(20)
-            .padding([.trailing],40)
             .background(.regularMaterial)
             .cornerRadius(10)
             .padding()
@@ -100,15 +98,15 @@ struct MenuDetailView: View {
             VStack{
                 HStack{
                     Text("Order for " + (name == "" ? "You" : name ) )
-                        .font(.largeTitle)
-                    Spacer(minLength: 150)
+                        .font((vSizeClass == .compact) || (hSizeClass == .compact) ? .body : .largeTitle)
+                    Spacer(minLength: (vSizeClass != .compact) ? 30 : 150)
                     Button{
                         orderItem = OrderItem(id: -999, item: item ?? noMenuItem)
                         updateOrder()
                         order.addOrder(orderItem: orderItem)
                     } label:{
                         Spacer()
-                        Text((item?.price ?? 0) * Double(quantity) ,format:.currency(code: "USD")).font(.title).bold()
+                        Text((item?.price ?? 0) * Double(quantity) ,format:.currency(code: "USD")).font(vSizeClass == .compact ? .body : .title).bold()
                         Image(systemName: addedItem ? "cart.fill.badge.plus" : "cart.badge.plus")
                         Spacer()
                     }
@@ -121,26 +119,42 @@ struct MenuDetailView: View {
                 .padding()
                 .background(.thinMaterial, in: Capsule())
                 HStack(alignment:.top){
-                    VStack(alignment:.leading){
-                        Text(item?.name ?? "Huli Pizza")
-                            .font(.largeTitle)
-                        
-                        Text(pizzaCrust?.rawValue ?? "Neopolitan")
-                        Text( doubleIngredient ? "Double Toppings" : "")
-                        Text("\(quantity)" + (quantity == 1 ? " pizza" : " pizzas") )
-                        TextField("Pizza for Who?", text:$name)
-                            .padding()
+                    if vSizeClass != .compact {
+                        VStack(alignment: .leading){
+                            Text(item?.name ?? "Huli Pizza")
+                                .font((vSizeClass == .compact) || (hSizeClass == .compact) ? .body : .title)
+                            
+                            Text(pizzaCrust?.rawValue ?? "Neopolitan")
+                            Text( doubleIngredient ? "Double Toppings" : "")
+                            Text("\(quantity)" + (quantity == 1 ? " pizza" : " pizzas") )
+                            TextField("Pizza for Who?", text:$name)
+                                .padding()
+                        }
+                        .animation(.easeIn, value: doubleIngredient)
+                        .font((vSizeClass == .compact) || (hSizeClass == .compact) ? .body : .title)
+                        .padding()
+                        .padding(.trailing,20)
+                    } else {
+                        HStack(alignment: .top){
+                            Text(item?.name ?? "Huli Pizza")
+                                .font(vSizeClass == .compact ? .body : .title)
+                            
+                            Text(pizzaCrust?.rawValue ?? "Neopolitan")
+                            Text( doubleIngredient ? "Double Toppings" : "")
+                            Text("\(quantity)" + (quantity == 1 ? " pizza" : " pizzas") )
+                            TextField("Pizza for Who?", text:$name)
+                                .padding()
+                        }
+                        .animation(.easeIn, value: doubleIngredient)
+                        .font((vSizeClass == .compact) || (hSizeClass == .compact) ? .body : .title)
+                        .padding()
+                        .padding(.trailing,20)
                     }
-                    .animation(.easeIn, value: doubleIngredient)
-                    .font(.title)
-                    .padding()
-                    .padding(.trailing,20)
                     if let image = UIImage(named: "\(item?.id ?? -1)_lg"){
                         Image(uiImage: image)
                             .resizable()
                             .scaledToFit()
                             .padding([.top,.bottom],5)
-                        //                    .clipShape(RoundedRectangle(cornerRadius:10))
                             .cornerRadius(15)
                         
                     } else {
@@ -152,6 +166,7 @@ struct MenuDetailView: View {
                 }
                 Spacer()
             }
+            Spacer()
         }
         .background(.linearGradient(colors: [.white,Color("Sky"),Color("Surf").opacity(0.3),Color("Surf")], startPoint: .topLeading, endPoint: .bottom))
         .onChange(of: item) { item in

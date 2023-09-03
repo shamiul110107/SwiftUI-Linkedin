@@ -118,15 +118,6 @@ struct OrderDetailView: View {
                 .font(.title)
                 .padding(.trailing,20)
                 .shadow(radius:7,x:2,y:2)
-                Button("Cancel"){
-                    presentSheet = false
-                }
-                .padding()
-                .padding([.leading,.trailing])
-                .foregroundColor(.white)
-                .background(.red,in: Capsule())
-                .font(.title)
-                .shadow(radius:7,x:2,y:2)
                 .alert("Huli Pizza Company \n \(orderItem.name) Updated", isPresented: $presentAlert){}
             }
         }

@@ -11,17 +11,15 @@ struct MenuItemTileView: View {
     var menuItem:MenuItem
     var body: some View{
         VStack{
-             Group{
+            Group{
                 if let image = UIImage(named:"\(menuItem.id)_sm"){
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
                 } else {
                     Image("surfboard_lg")
                         .resizable()
                         .scaledToFit()
-                        
-                        
                 }
             }
             Text(menuItem.name).font(.caption2)
