@@ -19,7 +19,7 @@ steps:
   
   - task: SonarCloudPrepare@1
     inputs:
-      SonarCloud: 'SonarCloud'
+      SonarCloud: 'shamiul110107'
       organization: 'shamiul110107'
       scannerMode: 'CLI'
       configMode: 'file'
