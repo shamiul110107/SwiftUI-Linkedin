@@ -10,6 +10,25 @@ pool:
   vmImage: 'macos-latest'
 
 steps:
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
+        brew install fastlane && fastlane unit_test && fastlane generate_code_coverage
+
+  - task: SonarCloudPrepare@1
+    inputs:
+      SonarCloud: 'SwiftUI-Linkedin - iOS'
+      organization: 'shamiul110107'
+      scannerMode: 'CLI'
+      configMode: 'file'
+      extraProperties: 'sonar.exclusions= Build/**/*'
+
+  - task: SonarCloudAnalyze@1
+
+  - task: SonarCloudPublish@1
+    inputs:
+      pollingTimeoutSec: '300'
 - task: Xcode@5
   inputs:
     actions: 'build'
