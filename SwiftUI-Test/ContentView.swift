@@ -30,7 +30,7 @@ struct ContentView: View {
                 } else {
                     MenuView(menu: menu, selectedItem: $selectedItem)
                 }*/
-                MenuView2(menu: menu)
+                MenuView3(menu: menu)
             }.tabItem {
                 Label("Menu", systemImage: "list.bullet")
             }

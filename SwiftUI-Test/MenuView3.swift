@@ -20,12 +20,10 @@ struct MenuView3: View {
     
     var body: some View {
         NavigationSplitView {
-            List(MenuCategory.allCases,
-                 id: \.self,
-                 selection: $selectedCategory) { cat in
+            List(MenuCategory.allCases, id: \.self, selection: $selectedCategory) { cat in
                 Text(cat.rawValue)
             }
-                 .navigationTitle("Pizza Categories")
+            .navigationTitle("Pizza Categories")
         } content: {
             List(categoryItems, selection: $selectedItem) { item in
                 NavigationLink(value: item) {
