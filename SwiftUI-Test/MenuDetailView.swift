@@ -18,6 +18,7 @@ struct MenuDetailView: View {
     @State var orderItem = OrderItem(id: -99, item: noMenuItem)
     @Environment(\.verticalSizeClass) private var vSizeClass
     @Environment(\.horizontalSizeClass) private var hSizeClass
+    let doubleToppings = "Double Toppings"
     func updateOrder(){
         orderItem.quantity = quantity
         orderItem.extraIngredients = doubleIngredient
@@ -82,7 +83,7 @@ struct MenuDetailView: View {
                 Spacer()
                 VStack {
                     Toggle(isOn: $doubleIngredient){
-                        Text((doubleIngredient ? "Double Toppings" : "Single Toppings"))
+                        Text(doubleIngredient ? doubleToppings : "Single Toppings")
                     }
                     Stepper(value: $quantity, in: 1...10 ){
                         Text("\(quantity) " + (quantity == 1 ? "pizza" : "pizzas"))
@@ -125,7 +126,7 @@ struct MenuDetailView: View {
                                 .font((vSizeClass == .compact) || (hSizeClass == .compact) ? .body : .title)
                             
                             Text(pizzaCrust?.rawValue ?? "Neopolitan")
-                            Text( doubleIngredient ? "Double Toppings" : "")
+                            Text(doubleIngredient ? doubleToppings : "")
                             Text("\(quantity)" + (quantity == 1 ? " pizza" : " pizzas") )
                             TextField("Pizza for Who?", text:$name)
                                 .padding()
@@ -140,7 +141,7 @@ struct MenuDetailView: View {
                                 .font(vSizeClass == .compact ? .body : .title)
                             
                             Text(pizzaCrust?.rawValue ?? "Neopolitan")
-                            Text( doubleIngredient ? "Double Toppings" : "")
+                            Text(doubleIngredient ? doubleToppings : "")
                             Text("\(quantity)" + (quantity == 1 ? " pizza" : " pizzas") )
                             TextField("Pizza for Who?", text:$name)
                                 .padding()
