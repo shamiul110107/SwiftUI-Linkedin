@@ -34,7 +34,7 @@ steps:
   - task: Xcode@5
     inputs:
       actions: 'build'
-      scheme: 'YourSchemeName'
+      scheme: 'SwiftUI-Test'
       sdk: 'iphoneos'
       configuration: 'Release'
       xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
