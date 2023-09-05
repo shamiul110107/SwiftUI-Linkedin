@@ -34,6 +34,8 @@
 		9ED458C22A5D48B6000ADDEE /* SwiftUI_TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED458C12A5D48B6000ADDEE /* SwiftUI_TestTests.swift */; };
 		9ED458CC2A5D48B6000ADDEE /* SwiftUI_TestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED458CB2A5D48B6000ADDEE /* SwiftUI_TestUITests.swift */; };
 		9ED458CE2A5D48B6000ADDEE /* SwiftUI_TestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED458CD2A5D48B6000ADDEE /* SwiftUI_TestUITestsLaunchTests.swift */; };
+		9EFFD2032AA6F9CF00E32F09 /* HeaderViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFFD2022AA6F9CF00E32F09 /* HeaderViewTests.swift */; };
+		9EFFD20F2AA6FE2D00E32F09 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 9EFFD20E2AA6FE2D00E32F09 /* ViewInspector */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,7 @@
 		9ED458C72A5D48B6000ADDEE /* SwiftUI-TestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftUI-TestUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED458CB2A5D48B6000ADDEE /* SwiftUI_TestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_TestUITests.swift; sourceTree = "<group>"; };
 		9ED458CD2A5D48B6000ADDEE /* SwiftUI_TestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_TestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9EFFD2022AA6F9CF00E32F09 /* HeaderViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EFFD20F2AA6FE2D00E32F09 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				9ED458C12A5D48B6000ADDEE /* SwiftUI_TestTests.swift */,
+				9EFFD2022AA6F9CF00E32F09 /* HeaderViewTests.swift */,
 			);
 			path = "SwiftUI-TestTests";
 			sourceTree = "<group>";
@@ -211,6 +216,8 @@
 			dependencies = (
 			);
 			name = "SwiftUI-Test";
+			packageProductDependencies = (
+			);
 			productName = "SwiftUI-Test";
 			productReference = 9ED458AD2A5D48B5000ADDEE /* SwiftUI-Test.app */;
 			productType = "com.apple.product-type.application";
@@ -229,6 +236,9 @@
 				9ED458BF2A5D48B6000ADDEE /* PBXTargetDependency */,
 			);
 			name = "SwiftUI-TestTests";
+			packageProductDependencies = (
+				9EFFD20E2AA6FE2D00E32F09 /* ViewInspector */,
+			);
 			productName = "SwiftUI-TestTests";
 			productReference = 9ED458BD2A5D48B6000ADDEE /* SwiftUI-TestTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -283,6 +293,9 @@
 				Base,
 			);
 			mainGroup = 9ED458A42A5D48B5000ADDEE;
+			packageReferences = (
+				9EFFD20D2AA6FE2D00E32F09 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+			);
 			productRefGroup = 9ED458AE2A5D48B5000ADDEE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -355,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ED458C22A5D48B6000ADDEE /* SwiftUI_TestTests.swift in Sources */,
+				9EFFD2032AA6F9CF00E32F09 /* HeaderViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +687,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9EFFD20D2AA6FE2D00E32F09 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.9.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9EFFD20E2AA6FE2D00E32F09 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9EFFD20D2AA6FE2D00E32F09 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9ED458A52A5D48B5000ADDEE /* Project object */;
 }
