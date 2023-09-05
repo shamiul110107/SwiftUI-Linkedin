@@ -83,7 +83,7 @@ struct OrderDetailView: View {
                 .background(.ultraThickMaterial)
                 
                 Toggle(isOn: $doubleIngredient){
-                    Text((doubleIngredient ? "Double Toppings" : "Single Toppings"))
+                    Text(doubleIngredient ? "Double Toppings" : "Single Toppings")
                 }
                 
                 Stepper(value: $quantity, in: 1...10 ){
@@ -118,7 +118,8 @@ struct OrderDetailView: View {
                 .font(.title)
                 .padding(.trailing,20)
                 .shadow(radius:7,x:2,y:2)
-                .alert("Huli Pizza Company \n \(orderItem.name) Updated", isPresented: $presentAlert){}
+                .alert("Huli Pizza Company \n \(orderItem.name) Updated",
+                       isPresented: $presentAlert){}
             }
         }
         .padding()
@@ -136,7 +137,7 @@ struct OrderDetailView_Previews: PreviewProvider {
     }
 }
 
-let noOrderItem = OrderItem(id: -1, item:noMenuItem)
+let noOrderItem = OrderItem(id: -10, item: noMenuItem)
 
 extension OrderModel{
     func replaceOrder(id:Int,with item:OrderItem){
