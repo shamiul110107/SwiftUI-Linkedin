@@ -14,7 +14,6 @@ steps:
     inputs:
       targetType: 'inline'
       script: |
-        # Install necessary tools and run commands
         brew install fastlane && fastlane unit_test && fastlane generate_code_coverage
   
   - task: SonarCloudPrepare@1
