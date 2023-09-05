@@ -13,7 +13,7 @@ import ViewInspector
 final class HeaderViewTests: XCTestCase {
 
     func testHeaderView() throws {
-        var orderModel = OrderModel()
+        let orderModel = OrderModel()
         orderModel.orderItems = testOrders
         
         XCTAssertNotNil(orderModel.orderItems)
