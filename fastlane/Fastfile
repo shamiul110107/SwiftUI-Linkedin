@@ -17,3 +17,4 @@ platform :ios do
   lane :generate_code_coverage do |options|
     sh "bash ../xccov-to-sonarqube-generic.sh ../Build/Logs/Test/SwiftUI-Test.xcresult > ./sonarqube-generic-coverage.xml"
   end
+ end
